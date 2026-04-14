@@ -1,33 +1,36 @@
-# SaúdeGov
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-O SaúdeGov é uma camada de inteligência artificial que atua como porta de entrada única dos serviços públicos, entendendo a necessidade do cidadão em linguagem natural e direcionando automaticamente para o serviço correto.
+## Getting Started
 
-## O que faz
+First, run the development server:
 
-- Entende linguagem natural (voz ou texto)
-- Classifica risco com base em protocolos clínicos
-- Indica exatamente para qual unidade de saúde ir
-- Reduz filas, erros e desperdício público
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Problema
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-O cidadão não sabe onde ir e entra no sistema pelo caminho errado, gerando filas, sobrecarga e alto custo para o Estado.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Solução
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-O cidadão fala → a IA entende → decide → e direciona para o lugar certo.
+## Learn More
 
-## Impacto
+To learn more about Next.js, take a look at the following resources:
 
-- Redução de filas
-- Melhor uso do SUS
-- Economia de até R$ 500 mil por unidade/ano
-- Prevenção de custos previdenciários
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## ⚠️ Importante
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Não substitui o médico. Atua como pré-triagem inteligente e direcionamento seguro.
+## Deploy on Vercel
 
----
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-**Uma mensagem. Uma decisão. O caminho certo.**
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
