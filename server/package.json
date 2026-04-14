@@ -1,0 +1,22 @@
+{
+    "name": "teleconsulta-signaling",
+    "version": "1.0.0",
+    "description": "Servidor de sinalização WebRTC para teleconsulta",
+    "main": "signaling-server.js",
+    "scripts": {
+        "start": "node signaling-server.js",
+        "dev": "node signaling-server.js"
+    },
+    "keywords": [
+        "webrtc",
+        "signaling",
+        "socket.io",
+        "teleconsulta"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.6.1"
+    }
+}
