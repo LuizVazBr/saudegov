@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparando Login - Anamnex</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #f4f7f6;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        p {
+            color: #7f8c8d;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Reparando...</h1>
+        <p>Estamos limpando o cache e corrigindo sua sessão. Você será redirecionado em instantes.</p>
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        async function repair() {
+            try {
+                // 1. Limpar LocalStorage e SessionStorage
+                localStorage.clear();
+                sessionStorage.clear();
+
+                // 2. Desregistrar Service Workers
+                if (window.navigator && navigator.serviceWorker) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                    }
+                }
+
+                // 3. Limpar Caches
+                if (window.caches) {
+                    const cacheNames = await caches.keys();
+                    for (let name of cacheNames) {
+                        await caches.delete(name);
+                    }
+                }
+
+                // 4. Limpar cookies específicos (tentativa)
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+                });
+
+                console.log("Limpeza concluída com sucesso.");
+            } catch (e) {
+                console.error("Erro na limpeza:", e);
+            } finally {
+                // Redirecionar para o login com cache-buster
+                setTimeout(() => {
+                    window.location.href = "/login?repaired=true&t=" + Date.now();
+                }, 1500);
+            }
+        }
+
+        repair();
+    </script>
+</body>
+
+</html>
